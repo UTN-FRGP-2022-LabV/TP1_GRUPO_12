@@ -1,0 +1,18 @@
+Change log
+----------
+
+29/03/2022
+Autor: Sergio Palacio
+Cambios:
+*	Se crearon las clases y las relaciones entre las mismas
+*	Se creó el main para imprimir algunos objetos: RECITAL, TEATRO, INFANTIL Y FUTBOL
+
+Falta:
+*	Crear la documentacion del diseño, la estructura de clases
+*	Crear el word con las consignas de la A a la J
+*	Validar que la estructura de clases se la correcta
+
+Adicional:
+*	Se podría agregar mas casos de objetos y mostrar el total recaudado de todos los eventos.
+*	Se podría agregar algunas validaciones mas para verificar que no pinche.
+----------

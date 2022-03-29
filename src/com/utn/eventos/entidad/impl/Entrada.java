@@ -2,6 +2,7 @@ package com.utn.eventos.entidad.impl;
 
 import java.time.LocalDateTime;
 
+import com.utn.eventos.entidad.CostoEntrada;
 import com.utn.eventos.utils.FuncionesFecha;
 
 public class Entrada {
@@ -10,13 +11,15 @@ public class Entrada {
 	private String tipoEvento;
 	private LocalDateTime fechaHora;
 	private Integer duracionEnMinutos;
+	private CostoEntrada costoEntrada;
 	
-	public Entrada(Long numero, String nombreEvento, String tipoEvento, LocalDateTime fechaHora, Integer duracionEnMinutos) {
+	public Entrada(Long numero, String nombreEvento, String tipoEvento, LocalDateTime fechaHora, Integer duracionEnMinutos, CostoEntrada costoEntrada) {
 		this.numero = numero;
 		this.nombreEvento = nombreEvento;
 		this.tipoEvento = tipoEvento;
 		this.fechaHora = fechaHora;
 		this.duracionEnMinutos = duracionEnMinutos;
+		this.setCostoEntrada(costoEntrada);
 	}
 	
 	public Long getNumero() {
@@ -52,9 +55,30 @@ public class Entrada {
 	
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\nEntrada [numero= ");
+		sb.append(numero);
+		sb.append(", nombreEvento= ");
+		sb.append(nombreEvento);
+		sb.append(", tipoEvento=");
+		sb.append(tipoEvento);
+		sb.append(", fechaHora=");
+		sb.append(FuncionesFecha.getFechaHoraFormateada(fechaHora));
+		sb.append(", duracionEnMinutos=");
+		sb.append(duracionEnMinutos);
+		sb.append(", precio=");
+		sb.append(costoEntrada);
+		sb.append("]");
 		
-		return "\nEntrada [numero=" + numero + ", nombreEvento=" + nombreEvento + ", tipoEvento=" + tipoEvento
-				+ ", fechaHora=" + FuncionesFecha.getFechaHoraFormateada(fechaHora) + ", duracionEnMinutos=" + duracionEnMinutos + "]";
+		return sb.toString();
+	}
+
+	public CostoEntrada getCostoEntrada() {
+		return costoEntrada;
+	}
+
+	public void setCostoEntrada(CostoEntrada costoEntrada) {
+		this.costoEntrada = costoEntrada;
 	}
 		
 }

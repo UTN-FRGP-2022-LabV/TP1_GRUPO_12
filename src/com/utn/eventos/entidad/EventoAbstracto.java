@@ -1,22 +1,21 @@
 package com.utn.eventos.entidad;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class EventoAbstracto implements EventoInterface{
-	private String nombreEvento;
+import com.utn.eventos.entidad.impl.Entrada;
+
+public abstract class EventoAbstracto implements Evento{
 	private LocalDateTime fechaHora;
 	private Integer duracionEnMinutos;
-	
-	public EventoAbstracto(String nombreEvento, LocalDateTime fechaHora, Integer duracionEnMinutos) {
-		this.setNombreEvento(nombreEvento);
-	}
+	private List<Entrada> entradas = new ArrayList();
 
-	public String getNombreEvento() {
-		return nombreEvento;
-	}
-
-	public void setNombreEvento(String nombreEvento) {
-		this.nombreEvento = nombreEvento;
+	public EventoAbstracto(LocalDateTime fechaHora, Integer duracionEnMinutos) {
+		this.setDuracionEnMinutos(duracionEnMinutos);
+		this.setFechaHora(fechaHora);
 	}
 
 	public LocalDateTime getFechaHora() {
@@ -35,5 +34,39 @@ public abstract class EventoAbstracto implements EventoInterface{
 		this.duracionEnMinutos = duracionEnMinutos;
 	}
 	
+	public void comprarEntrada(Long numeroEntrada, CostoEntrada costoEntrada) {
+		entradas.add(
+				new Entrada(
+						numeroEntrada, 
+						getNombreEvento(), 
+						getTipoEvento(), 
+						getFechaHora(), 
+						getDuracionEnMinutos(),
+						costoEntrada
+						)
+				);
+	}
+	
+	public void mostrarEntradas() {
+		System.out.println("\n------Entradas " + getTipoEvento() + "------");
+		getEntradas().forEach(e -> System.out.println(e));
+		System.out.println("Total Recaudado: $ " + calcularTotalRecaudado());
+	}
+
+	public List<Entrada> getEntradas() {
+		return this.entradas;
+	}
+	
+	public BigDecimal calcularTotalRecaudado() {
+		BigDecimal total = getEntradas().stream()
+		.map(entrada -> entrada.getCostoEntrada().getCosto())
+		.reduce(BigDecimal.ZERO, BigDecimal::add);
+		
+		return total.setScale(2, RoundingMode.HALF_EVEN);	
+	}
+	
 	public abstract String getTipoEvento();
+	public abstract String getNombreEvento();
+	public abstract boolean isValid();
+	
 }
