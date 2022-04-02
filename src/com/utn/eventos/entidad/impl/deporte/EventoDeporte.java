@@ -8,7 +8,7 @@ import com.utn.eventos.entidad.EventoAbstracto;
 import com.utn.eventos.enums.TipoEvento;
 
 public class EventoDeporte extends EventoAbstracto {
-	private static double RECARGO_INTERNACIONAL = 1.3;
+	private static final double RECARGO_INTERNACIONAL = 1.3;
 	private Contrincantes contrincantes;
 	private boolean esInternacional = false;
 	

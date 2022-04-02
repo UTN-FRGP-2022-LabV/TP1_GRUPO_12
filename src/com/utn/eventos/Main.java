@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import com.utn.eventos.constantes.Constantes;
 import com.utn.eventos.entidad.CostoEntrada;
 import com.utn.eventos.entidad.Evento;
 import com.utn.eventos.entidad.impl.costo.CostoDeporteFutbol;
@@ -28,14 +29,12 @@ import com.utn.eventos.utils.IdentificacionEntrada;
 public class Main {
 
 	public static void main(String[] args) {
-		//List<EventoInterface> eventos = new ArrayList();
 		
 		//Recital
 		Banda banda = new Banda("Rata Blanca");
 		List<Banda> bandasSoporte = Arrays.asList(new Banda("Hermetica"), new Banda("Almafuerte"));
-		
-		CostoEntrada costoVIP = new CostoRecitalVIP(BigDecimal.valueOf(1500));
-		CostoEntrada costoGeneralRecital = new CostoGeneral(BigDecimal.valueOf(800));
+		CostoEntrada costoVIP = new CostoRecitalVIP(BigDecimal.valueOf(Constantes.COSTO_FIJO_VIP));
+		CostoEntrada costoGeneralRecital = new CostoGeneral(BigDecimal.valueOf(Constantes.COSTO_FIJO_GENERAL));
 		LocalDateTime fechaRecital = FuncionesFecha.getFechaHora("28/03/2022 21:25");
 		Integer duracionEnMinutos = 100;
 		
@@ -51,7 +50,7 @@ public class Main {
 		//------------------------------------------------------------------------------
 		
 		//Teatro
-		CostoEntrada costoGeneralTeatro = new CostoGeneral(BigDecimal.valueOf(1350.50));
+		CostoEntrada costoGeneralTeatro = new CostoGeneral(BigDecimal.valueOf(Constantes.COSTO_FIJO_GENERAL_TEATRO));
 		List<Actor> actores = Arrays.asList(new Actor("Pepe"), new Actor("Van Helsing"));
 		ObraTeatro obraTeatro = new ObraTeatro("Dracula");
 		LocalDateTime fechaObra = FuncionesFecha.getFechaHora("28/03/2022 23:30");
@@ -67,8 +66,8 @@ public class Main {
 		//------------------------------------------------------------------------------
 
 		//Infantil
-		CostoEntrada costoMenor8Anios = new CostoGeneral(BigDecimal.valueOf(250));
-		CostoEntrada costoMayor8Anios = new CostoGeneral(BigDecimal.valueOf(500));
+		CostoEntrada costoMenor8Anios = new CostoGeneral(BigDecimal.valueOf(Constantes.COSTO_FIJO_INFANTIL_MENOR_8_ANIOS));
+		CostoEntrada costoMayor8Anios = new CostoGeneral(BigDecimal.valueOf(Constantes.COSTO_FIJO_INFANTIL_MAYOR_8_ANIOS));
 		ObraInfantil obraInfantil = new ObraInfantil("La casa de Mickey Mouse");
 		boolean tieneSouvernir = true;
 		LocalDateTime fechaObraInfantil = FuncionesFecha.getFechaHora("29/03/2022 00:15");
@@ -86,9 +85,9 @@ public class Main {
 		//------------------------------------------------------------------------------
 	
 		//Deporte
-		CostoEntrada costoFutbol = new CostoDeporteFutbol(BigDecimal.valueOf(300));
-		CostoEntrada costoRugby = new CostoDeporteRugby(BigDecimal.valueOf(450));
-		CostoEntrada costoJockey = new CostoDeporteHockey(BigDecimal.valueOf(380));
+		CostoEntrada costoFutbol = new CostoDeporteFutbol(BigDecimal.valueOf(Constantes.COSTO_FIJO_DEPORTE_FUTBOL));
+		CostoEntrada costoRugby = new CostoDeporteRugby(BigDecimal.valueOf(Constantes.COSTO_FIJO_DEPORTE_RUGBY));
+		CostoEntrada costoJockey = new CostoDeporteHockey(BigDecimal.valueOf(Constantes.COSTO_FIJO_DEPORTE_JOCKEY));
 		
 		LocalDateTime fechaDeporte = FuncionesFecha.getFechaHora("29/03/2022 00:35");
 		Integer duracionEnMinutosDeporte = 120;
@@ -102,7 +101,6 @@ public class Main {
 		deporte.comprarEntrada(numeroEntradaFutbol, costoFutbol);
 		
 		deporte.mostrarEntradas();
-		//eventos.forEach(e -> System.out.println(e));
 		
 	}
 
