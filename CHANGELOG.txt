@@ -16,3 +16,11 @@ Adicional:
 *	Se podría agregar mas casos de objetos y mostrar el total recaudado de todos los eventos.
 *	Se podría agregar algunas validaciones mas para verificar que no pinche.
 ----------
+
+Modificacion 01/04/2022 - Juan Manuel Oreguy
+
+*Modificado el EventoAbstracto
+*Se cambio la variable duracionEnMinutos a tipo Constante
+*Se comentó el Setter de duracionEnMinutos
+*Este cambio se realizo solo en el EventoAbstracto para asignarle la misma duración a todos los eventos.
+*De tener eventos con distintas duraciones, deberiamos quitarle el final a la duracionEnMinutos y descomentar el Setter

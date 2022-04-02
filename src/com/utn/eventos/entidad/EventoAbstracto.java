@@ -10,11 +10,11 @@ import com.utn.eventos.entidad.impl.Entrada;
 
 public abstract class EventoAbstracto implements Evento{
 	private LocalDateTime fechaHora;
-	private Integer duracionEnMinutos;
+	private final Integer duracionEnMinutos = 120;
 	private List<Entrada> entradas = new ArrayList();
 
 	public EventoAbstracto(LocalDateTime fechaHora, Integer duracionEnMinutos) {
-		this.setDuracionEnMinutos(duracionEnMinutos);
+//		this.setDuracionEnMinutos(duracionEnMinutos); 
 		this.setFechaHora(fechaHora);
 	}
 
@@ -30,9 +30,9 @@ public abstract class EventoAbstracto implements Evento{
 		return duracionEnMinutos;
 	}
 
-	public void setDuracionEnMinutos(Integer duracionEnMinutos) {
-		this.duracionEnMinutos = duracionEnMinutos;
-	}
+//	public void setDuracionEnMinutos(Integer duracionEnMinutos) {
+//		this.duracionEnMinutos = duracionEnMinutos;
+//	}
 	
 	public void comprarEntrada(Long numeroEntrada, CostoEntrada costoEntrada) {
 		entradas.add(
